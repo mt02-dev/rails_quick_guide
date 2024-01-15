@@ -18,10 +18,10 @@ services:
   db:
     image: postgres
     volumes:
-      - db_volume:/var/lib/postgres
+      - psg_volume:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
 volumes:
-  db_volume:
+  psg_volume:
