@@ -1,2 +1,19 @@
 ja:
-  
+  activerecord:
+    error:
+    models:
+      tasks: タスク
+    attributes:
+      task:
+        id: ID
+        name: 名前
+        description: 詳しい説明
+        created_at: 登録日時
+        updated_at: 更新日時
+  helper:
+    select:
+      prompt: 選択してください
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する

@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'application/header'%>
+    <div class='container'> 
+      <% if flash[:notice] %>
+        <div class='alert alert-primary'>
+          <%= flash[:notice] %> 
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
