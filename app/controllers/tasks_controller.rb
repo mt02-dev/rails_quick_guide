@@ -19,9 +19,9 @@ class TasksController < ApplicationController
       redirect_to tasks_path(:task)
       # redirect_to tasks_path, notice: "タスク名:#{task.name}を登録しました。"
     else
-      redirect_back fallback_location: new_user_path, flash: {
+      redirect_back fallback_location: new_task_path, flash: {
         task: task,
-        error_messages: task.errors.fullmessages
+        error_messages: task.errors.full_messages
       }
     end
   end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     else
       redirect_back fallback_location: edit_task_path, flash: {
         task: task,
-        error_messages: task.errors.fullmessages
+        error_messages: task.errors.full_messages
       }
     end
   end

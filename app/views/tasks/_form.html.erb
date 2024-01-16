@@ -1,3 +1,10 @@
+<% if flash[:error_messages] %>
+  <ul class='alert alert-danger' id='error_explanation'>
+    <% flash[:error_messages].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: task, local: true do |f| %>
   <div class='form-group'>
@@ -10,4 +17,4 @@
   </div>
   <%= f.submit nil, class: 'btn btn-secondary' %>
 
-<% end%>
+<% end %>
