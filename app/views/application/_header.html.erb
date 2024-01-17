@@ -1,5 +1,16 @@
 <nav class="navbar bg-secondary-subtle">
   <div class="container-fluid">
     <%= link_to 'Taskleaf', tasks_path, class: 'navbar-brand'%>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+        <li class="nav-item"><%= link_to 'タスク一覧', tasks_path, class: 'nav-link' %></li>
+        <% if current_user.admin? %>
+          <li class="nav-item"><%= link_to 'ユーザ一覧', admin_user_path, class: 'nav-link' %>/li>
+        <% end %>
+        <li class="nav-item"><%= link_to 'ログアウト', logout_path, class: 'nav-link' %>/li>
+      <% else %>
+        <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+      <% end %>
+    </ul>
   </div>
 </nav>
