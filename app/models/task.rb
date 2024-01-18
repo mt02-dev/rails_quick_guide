@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   # current_user.tasks.recent で現在のユーザのタスクを降順で取得 
   scope :recent, -> { order(created_at: :desc)}
   private
+  
   def validate_name_not_incloding_comma
     # nameがnilでもエラーにならない
     errors.add(:name, 'にカンマを含めることはできません。') if name&.include?(',')

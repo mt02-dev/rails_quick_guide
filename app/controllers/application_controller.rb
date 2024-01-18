@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   before_action :login_required
-  before_action :require_admin
 
 
   private
@@ -13,7 +12,5 @@ class ApplicationController < ActionController::Base
     redirect_to login_url unless current_user
   end
 
-  def require_admin
-    redirect_to root_url unless current_user.admin?
-  end
+  
 end

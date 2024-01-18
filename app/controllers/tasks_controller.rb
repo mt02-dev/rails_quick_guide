@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy ]
+  before_action :set_tasks, only: %i[ show edit update destroy ]
 
   def index
-    # @tasks = Task.where(user_id: current_user.id)
+    @tasks = current_user.tasks.order(created_at: :desc)
   end
 
   def show
@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = current_user.tasks.new(task_params) 
     if @task.save
       flash[:notice] = "タスク名:#{@task.name}を登録しました。"
       redirect_to tasks_path(:task)
@@ -21,7 +22,7 @@ class TasksController < ApplicationController
     else
       redirect_back fallback_location: new_task_path, flash: {
         task: @task,
-        error_messages: task.errors.full_messages
+        error_messages: @task.errors.full_messages
       }
     end
   end
@@ -53,6 +54,6 @@ class TasksController < ApplicationController
   end
 
   def set_tasks
-    @tasks = current_user.tasks.order(created_at: :desc)
+    @task = current_user.tasks.find(params[:id]) 
   end
 end

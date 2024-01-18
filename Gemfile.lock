@@ -113,10 +113,16 @@ GEM
     debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
     execjs (2.9.1)
+    factory_bot (6.4.5)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (3.25.2-x86_64-linux)
@@ -210,6 +216,10 @@ GEM
     rails-i18n (7.0.8)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_autolink (1.1.8)
+      actionview (> 3.1)
+      activesupport (> 3.1)
+      railties (> 3.1)
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -225,6 +235,23 @@ GEM
     reline (0.4.2)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.1.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-embedded (1.69.7-x86_64-linux-gnu)
@@ -281,14 +308,18 @@ DEPENDENCIES
   capybara
   dartsass-sprockets
   debug
+  factory_bot_rails
   importmap-rails
   jbuilder
   mini_racer (~> 0.8.0)
   pg (~> 1.1)
   pry-byebug (~> 3.10, >= 3.10.1)
   puma (>= 5.0)
+  rack (~> 3.0, >= 3.0.8)
   rails (~> 7.1.2)
   rails-i18n (~> 7.0, >= 7.0.8)
+  rails_autolink
+  rspec-rails (~> 6.1.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails

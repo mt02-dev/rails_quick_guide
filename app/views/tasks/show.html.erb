@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <th><%= Task.human_attribute_name(:description) %></th>
-      <td><%= simple_format(h(@task.description), {}, sanitaize: false, wrapper_tag: "div") %></td>
+      <td><%= auto_link(simple_format(h(@task.description), {}, sanitaize: false, wrapper_tag: "div")) %></td>
     </tr>
     <tr>
       <th><%= Task.human_attribute_name(:created_at) %></th>
