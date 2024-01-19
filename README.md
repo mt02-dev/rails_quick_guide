@@ -1,14 +1,14 @@
 ### 解決したい事
- Docker + rails + postgresqlの環境でrspecのsystemtestを行いたいのですが
- 何が原因か検討がつかないため、質問させてください。
- また、根本的に私が行いたいことは現実的なことであるのかも含めてお教えいただきたいです。
- 今回Ruby on Railsの速習実践ガイドを実施する中でDocker環境で進めてみようと試み、
- 本リポジトリのような環境を作成しました。また、調査する中でchromeのバージョンと
- driverとchromeのバージョンが異なると動作しないという記載もあり、
- chromeのstable版とchrome-driverのstable版のバージョンが異なることがわかり揃える方法を
- 調査しましたが、揃える方法がわかりませんでした。
- また、115以降chromeとdriverが統合されたと読み取れたため、google-chrome-stableを入れない状態で実施、
- driverではなくchrome-headless-shellを入れるなど行いましたが解決に至りませんでした。
+ Docker + rails + postgresqlの環境でrspecのsystemtestを行いたいのですが   
+ 何が原因か検討がつかないため、質問させてください。   
+ また、根本的に私が行いたいことは現実的なことであるのかも含めてお教えいただきたいです。   
+ 今回Ruby on Railsの速習実践ガイドを実施する中でDocker環境で進めてみようと試み、   
+ 本リポジトリのような環境を作成しました。また、調査する中でchromeのバージョンと   
+ driverとchromeのバージョンが異なると動作しないという記載もあり、   
+ chromeのstable版とchrome-driverのstable版のバージョンが異なることがわかり揃える方法を   
+ 調査しましたが、揃える方法がわかりませんでした。   
+ また、115以降chromeとdriverが統合されたと読み取れたため、google-chrome-stableを入れない状態で実施、   
+ driverではなくchrome-headless-shellを入れるなど行いましたが解決に至りませんでした。   
 
 ```sh
 # google-chrome-stable
@@ -23,8 +23,8 @@ curl -sS https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_ST
 
 
 ### 今、起きている事
-Docker 環境でsystemテストを実施しようとして以下のようにエラーメッセージが表示されている
-```
+Docker 環境でsystemテストを実施しようとして以下のようにエラーメッセージが表示されている   
+```   
  selenium::webdriver::error::sessionnotcreatederror:
             session not created: chrome failed to start: exited normally.
               (session not created: devtoolsactiveport file doesn't exist)
@@ -73,16 +73,16 @@ Docker 環境でsystemテストを実施しようとして以下のようにエ�
 ```
 
 ### 調べた事
-* Rails + postgres + chromedriverのdocker-compose環境を作る
-https://qiita.com/mh4gf/items/e6e4551bcae0fb745ee8
-https://qiita.com/ngron/items/f61b8635b4d67f666d75
+* Rails + postgres + chromedriverのdocker-compose環境を作る   
+https://qiita.com/mh4gf/items/e6e4551bcae0fb745ee8   
+https://qiita.com/ngron/items/f61b8635b4d67f666d75   
 * Debianにgoogle-chrome-stableをインストールする   
-https://www.linuxcapable.com/how-to-install-google-chrome-on-debian-linux/
+https://www.linuxcapable.com/how-to-install-google-chrome-on-debian-linux/   
 
 * chrome version 115以降について
-https://zenn.dev/route06/articles/78c30c6627a932
+https://zenn.dev/route06/articles/78c30c6627a932   
 https://chromedriver.chromium.org/downloads/version-selection
 
-* chrome-for-testingの安定版について
+* chrome-for-testingの安定版について   
 https://googlechromelabs.github.io/chrome-for-testing/
 
