@@ -79,7 +79,7 @@ https://qiita.com/ngron/items/f61b8635b4d67f666d75
 * Debianにgoogle-chrome-stableをインストールする   
 https://www.linuxcapable.com/how-to-install-google-chrome-on-debian-linux/   
 
-* chrome version 115以降について
+* chrome version 115以降について   
 https://zenn.dev/route06/articles/78c30c6627a932   
 https://chromedriver.chromium.org/downloads/version-selection
 
