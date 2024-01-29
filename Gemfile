@@ -48,6 +48,7 @@ gem 'rack', '~> 3.0', '>= 3.0.8'
 
 gem 'rails-i18n', '~> 7.0', '>= 7.0.8'
 gem 'rails_autolink'
+gem 'ransack'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

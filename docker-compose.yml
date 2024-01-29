@@ -4,7 +4,9 @@ services:
     build: .
     volumes:
       - .:/taskleaf
-    command: sh -c "rm -f tmp/pids/server.pid && rails s --environment=production -p 3000 -b '0.0.0.0'"
+    command: sh -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
+    # production用
+    #command: sh -c "rm -f tmp/pids/server.pid && rails s --environment=production -p 3000 -b '0.0.0.0'"
     ports:
       - 3000:3000
     depends_on:

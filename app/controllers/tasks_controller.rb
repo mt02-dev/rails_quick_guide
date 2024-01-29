@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   before_action :set_tasks, only: %i[ show edit update destroy ]
 
   def index
-    @tasks = current_user.tasks.order(created_at: :desc)
+    @q = current_user.tasks.ransack(params[:q])
+    @tasks = @q.result(distint: true).recent
   end
 
   def show
@@ -15,6 +16,12 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params) 
+
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @task.save
       flash[:notice] = "タスク名:#{@task.name}を登録しました。"
       redirect_to tasks_path(:task)
@@ -46,6 +53,11 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_url, status: :see_other, notice: "タスク「#{task.name}」を削除しました。"
+  end
+
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render new_task_path unless @task.valid?
   end
 
   private
