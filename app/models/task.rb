@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   # カスタムしたバリデーションの場合はvalidateメソッドを用いる
-  validate  :validate_name_not_incloding_comma
+  validate  :validate_name_not_including_comma
 
   belongs_to :user
 
@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   scope :recent, -> { order(created_at: :desc)}
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"] 
+    ["name", "created_at"] 
   end
   
   def self.ransackable_associations(auth_object = nil)
@@ -18,7 +18,7 @@ class Task < ApplicationRecord
   end
   private
   
-  def validate_name_not_inclraoding_comma
+  def validate_name_not_including_comma
     # nameがnilでもエラーにならない
     errors.add(:name, 'にカンマを含めることはできません。') if name&.include?(',')
   end

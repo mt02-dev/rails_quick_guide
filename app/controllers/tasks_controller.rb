@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distint: true).recent
+    @tasks = @q.result(distint: true)
   end
 
   def show
@@ -23,6 +23,8 @@ class TasksController < ApplicationController
     end
 
     if @task.save
+      # mail 送信
+      TaskMailer.creation_email(@task).deliver_now
       flash[:notice] = "タスク名:#{@task.name}を登録しました。"
       redirect_to tasks_path(:task)
       # redirect_to tasks_path, notice: "タスク名:#{task.name}を登録しました。"
@@ -52,7 +54,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_url, status: :see_other, notice: "タスク「#{task.name}」を削除しました。"
+    redirect_to tasks_url, status: :see_other, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
   def confirm_new
