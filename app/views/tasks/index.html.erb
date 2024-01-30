@@ -18,6 +18,11 @@
  </div>
 <% end %>
 
+<div class="mb-3">
+  <%= paginate @tasks %>
+  <%= page_entries_info @tasks %>
+</div>
+
 <%= link_to "新規作成", new_task_path, class: 'btn btn-primary' %>
 
 <div class='mb-3'>
@@ -43,3 +48,9 @@
     </tbody>
   </table>
 </div>
+<%= link_to 'エスクポート', tasks_path(format: :csv), class: 'btn btn-secondary' %>
+
+<%= form_with url: import_tasks_path, multipart: true, class: 'mb-3' do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "インポート", class: 'btn btn-secondary' %>
+<% end %>

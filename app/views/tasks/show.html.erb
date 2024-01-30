@@ -18,6 +18,11 @@
       <td><%= auto_link(simple_format(h(@task.description), {}, sanitaize: false, wrapper_tag: "div")) %></td>
     </tr>
     <tr>
+      <th><%= Task.human_attribute_name(:image) %></th>
+      <%# image_tagはイメージが添付しているかどうかに関わらず存在し、存在しない場合エラーとなるため条件分岐している%>
+      <td><%= image_tag @task.image if @task.image.attached? %></td>
+    </tr>
+    <tr>
       <th><%= Task.human_attribute_name(:created_at) %></th>
       <td><%= @task.created_at %></td>
     </tr>

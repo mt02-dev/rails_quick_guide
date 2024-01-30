@@ -3,7 +3,14 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distint: true)
+    @tasks = @q.result(distint: true).page(params[:page])
+
+    # アクセスしてきたURLによってレスポンスを切り替える
+    respond_to do |format|
+      format.html
+      # csvでアクセスしてきた場合にcsvファイルを返す
+      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def show
@@ -23,8 +30,8 @@ class TasksController < ApplicationController
     end
 
     if @task.save
-      # mail 送信
-      TaskMailer.creation_email(@task).deliver_now
+      # mail 送信 (利用する時は起動後にコンテナにgem mailcatcherをinstall)
+      # TaskMailer.creation_email(@task).deliver_now
       flash[:notice] = "タスク名:#{@task.name}を登録しました。"
       redirect_to tasks_path(:task)
       # redirect_to tasks_path, notice: "タスク名:#{task.name}を登録しました。"
@@ -62,9 +69,14 @@ class TasksController < ApplicationController
     render new_task_path unless @task.valid?
   end
 
+  def import
+    current_user.tasks.import(params[:file])
+    redirect_to tasks_url, notice: "タスクを追加しました"
+  end
+
   private
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:name, :description, :image)
   end
 
   def set_tasks

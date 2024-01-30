@@ -5,15 +5,25 @@
 </div>
 <%= render partial: 'share/error_message' %>
 
+<%= render partial: 'form', locals: { task: @task } %>
+
+<%
+=begin
+%>
+画像を添付する際に確認画面を挟むと少し設定が必要にある
+今回は確認画面を実施しない状況で作成(速習ガイド)
 <%= form_with model: @task, url: confirm_new_task_path, data: { turbo: false } do |f| %>
   <div class="form-group">
-    <%= f.label :name %> 
+    <%= f.label :name  %>
     <%= f.text_field :name, class: 'form-control', id: 'task_name' %>
   </div>
   <div class="form-group">
-    <%= f.label :description %> 
+    <%= f.label :description  %>
     <%= f.text_area :description, rows: 5, class: 'form-control', id: 'task_description' %>
   </div>
   <%= f.submit '確認', class: 'btn btn-secondary' %>
 
-<% end %>
+<% end %>  
+<% 
+=end
+%>

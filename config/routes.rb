@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tasks do
     # /tasks/new/confirmにきたらconfirm_newアクションを実行
     post :confirm, action: :confirm_new, on: :new
+    post :import, on: :collection
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
