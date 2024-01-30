@@ -16,7 +16,7 @@ RUN apt-get update -qq && apt-get install -y \
 RUN bash -c "curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg" && \
     echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/redis.list && \
     apt-get update && \
-    apt-get install redis
+    apt-get install -y redis
 # chrome　ブラウザを同コンテナで利用する際に必要と思われる設定(現状うまくいってない)
 # WORKDIR /tmp
 # RUN CHROMEDRIVER_VERSION=`curl -sS https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE` && \

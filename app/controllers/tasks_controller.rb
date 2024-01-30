@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     if @task.save
       # mail 送信 (利用する時は起動後にコンテナにgem mailcatcherをinstall)
       # TaskMailer.creation_email(@task).deliver_now
+      SampleJob.perform_later
       flash[:notice] = "タスク名:#{@task.name}を登録しました。"
       redirect_to tasks_path(:task)
       # redirect_to tasks_path, notice: "タスク名:#{task.name}を登録しました。"

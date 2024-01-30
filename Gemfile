@@ -50,6 +50,7 @@ gem 'rails-i18n', '~> 7.0', '>= 7.0.8'
 gem 'rails_autolink'
 gem 'ransack'
 gem 'kaminari'
+gem 'sidekiq'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
