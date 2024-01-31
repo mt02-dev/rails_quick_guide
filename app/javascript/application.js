@@ -12,3 +12,4 @@ window.onload = function () {
 }
 
 import "controllers"
+import "tasks"

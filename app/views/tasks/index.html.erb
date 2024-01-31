@@ -41,7 +41,7 @@
           <td><%= task.created_at %>
           <td>
             <%= link_to '編集', task, class: 'btn btn-secondary mr-3' %>
-            <%= link_to '削除', task, class: 'btn btn-secondary',  data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' } %>
+            <%= link_to '削除', task, class: 'btn btn-secondary delete',  data: { turbo_method: :delete, turbo_confirm: '削除してもよろしいですか？' } %>
           </td>
         </tr>
       <% end %>
